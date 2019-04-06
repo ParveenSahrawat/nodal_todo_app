@@ -1,25 +1,21 @@
 import React, { Component } from 'react';
+import Task from './components/Task';
+import './App.css';
 import { connect } from 'react-redux';
-import { simpleAction } from './actions/simpleAction';
+
 
 class App extends Component {
-
-  simpleAction = (event) => {
-    this.props.simpleAction();
-  }
 
   render() {
     return (
       <div className="App">
-        <button onClick={this.simpleAction}>Redux</button>
-        <pre>{JSON.stringify(this.props)}</pre>
+        
+        <Task />
       </div>
     );
   }
 }
 
 const mapStateToProps = state => ({...state});
-const mapDispatchToProps = dispatch => ({
-  simpleAction: () => dispatch(simpleAction())
-})
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+
+export default connect(mapStateToProps)(App);
